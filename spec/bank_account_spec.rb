@@ -17,4 +17,13 @@ describe BankAccount do
       expect(subject.credit).to eq(10)
     end
   end
+
+  describe '#deduct_amount' do
+    it { is_expected.to respond_to(:deduct_amount).with(1).argument }
+
+    it 'deducts an amount from the bank account' do
+      subject.deduct_amount(10)
+      expect(subject.debit).to eq(10)
+    end
+  end
 end

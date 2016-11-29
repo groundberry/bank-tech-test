@@ -13,6 +13,11 @@ class BankAccount
     @balance += amount
   end
 
+  def deduct_amount(amount)
+    @debit = amount
+    @balance -= amount
+  end
+
   def check_balance
     @balance
   end
