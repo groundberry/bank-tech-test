@@ -3,10 +3,11 @@ require_relative 'bank_statement'
 
 class BankAccount
 
-  attr_reader :credit, :debit, :balance
+  attr_reader :date, :credit, :debit, :balance
   MIN_BALANCE  = 30
 
   def initialize
+    @date = (Time.now).strftime('%d/%m/%Y %H:%M')
     @credit = 0
     @debit = 0
     @balance = 0
@@ -26,6 +27,5 @@ class BankAccount
   def check_balance
     @balance
   end
-
 
 end

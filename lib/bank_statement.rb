@@ -1,3 +1,5 @@
+require_relative 'bank_account'
+
 class BankStatement
 
   attr_reader :bank_statement
@@ -7,7 +9,7 @@ class BankStatement
   end
 
   def create_bank_statement
-    date = '29/11/2016'
+    date = (Time.new).strftime('%d/%m/%Y')
     credit = 50.to_s
     debit = 10.to_s
     balance = 40.to_s
