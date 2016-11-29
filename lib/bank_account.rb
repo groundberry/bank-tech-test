@@ -13,5 +13,9 @@ class BankAccount
     @balance += amount
   end
 
+  def check_balance
+    @balance
+  end
+
 
 end
