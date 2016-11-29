@@ -13,8 +13,9 @@ describe BankAccount do
     it { is_expected.to respond_to(:add_amount).with(1).argument }
 
     it 'adds an amount of credit to the bank account' do
-      subject.add_amount(10)
-      expect(subject.credit).to eq(10)
+      added_amount = 10
+      subject.add_amount(added_amount)
+      expect(subject.credit).to eq(added_amount)
     end
   end
 
@@ -22,8 +23,16 @@ describe BankAccount do
     it { is_expected.to respond_to(:deduct_amount).with(1).argument }
 
     it 'deducts an amount from the bank account' do
-      subject.deduct_amount(10)
-      expect(subject.debit).to eq(10)
+      added_amount = 40
+      subject.add_amount(added_amount)
+      deducted_amount = 10
+      expect{ subject.deduct_amount(deducted_amount) }.to change { subject.balance }.by( -deducted_amount )
+    end
+
+    it 'raises an error if there is not enough balance in the account' do
+      error = 'There is not enough balance in your account'
+      amount = 10
+      expect { subject.deduct_amount(amount) }.to raise_error(error)
     end
   end
 end
