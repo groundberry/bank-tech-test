@@ -1,3 +1,6 @@
+
+require_relative 'bank_statement'
+
 class BankAccount
 
   attr_reader :credit, :debit, :balance
