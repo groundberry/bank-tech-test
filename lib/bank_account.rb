@@ -23,7 +23,7 @@ class BankAccount
   end
 
   def print_last_transactions(number_of_transactions)
-    selected_transactions = @transactions[-number_of_transactions..-1]
+    selected_transactions = @transactions.reverse[0..2]
     puts "#{'date'.center(20)} || #{'credit'.center(10)} || #{'debit'.center(10)} ||  #{'balance'.center(10)}"
     selected_transactions.each do |transaction|
       date = transaction.date.strftime('%d/%m/%Y')
