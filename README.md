@@ -16,10 +16,11 @@
 - When she prints her *bank statement* she would see:
 
 ```
-date       || credit || debit   || balance  
-14/01/2012 ||        || 500.00  || 2500.00  
-13/01/2012 || 2000.00||         || 3000.00  
-10/01/2012 || 1000.00||         || 1000.00
+date       || credit || debit   || balance
+14/01/2012 ||        || 500.00  || 2500.00
+13/01/2012 || 2000.00||         || 3000.00
+10/01/2012 || 1000.00||         || 1000.00  
+
 ```
 
 ## User stories
@@ -62,9 +63,9 @@ RuntimeError: There is not enough balance in your account
 irb(main):006:0> acct.deduct_amount(500)
 => 2500
 irb(main):007:0> acct.print_last_transactions(3)
-        date         ||   credit   ||   debit    ||   balance  
-     29/11/2016      ||    1000    ||            ||     1000   
-     29/11/2016      ||    2000    ||            ||     3000   
-     29/11/2016      ||            ||    500     ||     2500   
+        date            ||   credit   ||    debit   ||  balance  
+        30/11/2016      ||            ||     500    ||     2500   
+        30/11/2016      ||    2000    ||            ||     3000   
+        30/11/2016      ||    1000    ||            ||     1000  
 
 ```
