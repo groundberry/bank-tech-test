@@ -7,6 +7,14 @@ describe BankAccount do
     it 'displays the initial balance of a new account' do
       expect(subject.balance).to eq(0)
     end
+
+    it 'displays the balance of a account after each transaction' do
+      added_amount = 1000
+      subject.add_amount(added_amount)
+      deducted_amount = 500
+      subject.deduct_amount(deducted_amount)
+      expect(subject.balance).to eq(500)
+    end
   end
 
   describe '#add_amount' do
