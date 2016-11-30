@@ -12,10 +12,10 @@ describe BankAccount do
   describe '#add_amount' do
     it { is_expected.to respond_to(:add_amount).with(1).argument }
 
-    it 'adds an amount of credit to the bank account' do
+    it 'adds an amount to the bank account' do
       added_amount = 10
       subject.add_amount(added_amount)
-      expect(subject.credit).to eq(added_amount)
+      expect{ subject.add_amount(added_amount) }.to change { subject.balance }.by( added_amount )
     end
   end
 
@@ -35,4 +35,6 @@ describe BankAccount do
       expect { subject.deduct_amount(amount) }.to raise_error(error)
     end
   end
+
+
 end

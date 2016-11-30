@@ -1,31 +1,36 @@
-
-require_relative 'bank_statement'
+require_relative 'transaction'
 
 class BankAccount
 
-  attr_reader :date, :credit, :debit, :balance
-  MIN_BALANCE  = 30
+  attr_reader :balance, :transactions
 
   def initialize
-    @date = (Time.now).strftime('%d/%m/%Y %H:%M')
-    @credit = 0
-    @debit = 0
     @balance = 0
+    @transactions = []
   end
 
   def add_amount(amount)
-    @credit = amount
+    transaction = Transaction.new(Time.now, amount)
+    @transactions.push(transaction)
     @balance += amount
   end
 
   def deduct_amount(amount)
-    raise 'There is not enough balance in your account' if balance - amount < MIN_BALANCE
-    @debit = amount
+    raise 'There is not enough balance in your account' if amount > balance
+    transaction = Transaction.new(Time.now, -amount)
+    @transactions.push(transaction)
     @balance -= amount
   end
 
-  def check_balance
-    @balance
+  def print_last_transactions(number_of_transactions)
+    selected_transactions = @transactions[-number_of_transactions..-1]
+    puts "#{'date'.center(20)} || #{'credit'.center(10)} || #{'debit'.center(10)} ||  #{'balance'.center(10)}"
+    selected_transactions.each do |transaction|
+      date = transaction.date.strftime('%d/%m/%Y')
+      credit = transaction.amount if transaction.amount > 0
+      debit = -transaction.amount if transaction.amount < 0
+      puts "#{date.center(20)} || #{credit.to_s.center(10)} || #{debit.to_s.center(10)} ||  #{@balance.to_s.center(10)}"
+    end
   end
 
 end
